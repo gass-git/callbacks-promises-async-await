@@ -21,15 +21,16 @@ const url = 'https://jsonplaceholder.typicode.com/posts/1'
 
 function getData(callbackOne, callbackTwo) {
   fetch(url)
-    .then((resp) => resp.json()
-    )
+    .then((resp) => {
+      return resp.json()
+    })
     .then((respObj) => {
       callbackOne(respObj)
       callbackTwo(respObj)
     })
-    .catch((error) =>
+    .catch((error) => {
       showResponse(error)
-    )
+    })
 }
 
 function showResponse(respObj) {
@@ -41,3 +42,25 @@ function showTitle(respObj) {
 }
 
 getData(showResponse, showTitle)
+
+
+// --- EXAMPLE 3 ---
+
+const posts_url = 'https://jsonplaceholder.typicode.com/posts'
+
+fetch(posts_url)
+  .then((resp) => {
+    return resp.json()
+  })
+  .then((arr) => {
+    let filteredArr = arr.filter((item) => item.id <= 3)
+    return filteredArr
+  })
+  .then((filteredArr) => {
+    filteredArr.forEach((item) => {
+      console.log(item.body)
+    })
+  })
+  .catch((error) => {
+    console.log(error)
+  })

@@ -25,7 +25,6 @@ function getData() {
   return promise
 }
 
-
 getData()
   .then((data) => console.log(`original data: ${data}`))
   .catch((error) => console.log(error))
