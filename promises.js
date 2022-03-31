@@ -14,10 +14,10 @@
 
 function getData() {
   const promise = new Promise((resolve, reject) => {
-    let rand = Math.random()
+    let success = true
 
     setTimeout(() => {
-      if (rand > 0.8) resolve('this string is some random data')
+      if (success) resolve('this string is some')
       else reject('some error')
     }, 4000)
   })
@@ -25,6 +25,26 @@ function getData() {
   return promise
 }
 
+
 getData()
-  .then((data) => console.log(data))
+  .then((data) => console.log(`original data: ${data}`))
   .catch((error) => console.log(error))
+
+
+// --- THENABLES ---
+
+getData()
+  .then((data) => {
+    let txt = `${data} random data`
+    return txt
+  })
+  .then((txt) => {
+    let modifiedTxt = `${txt} modified`
+    return modifiedTxt
+  })
+  .then((modifiedTxt) => {
+    console.log(modifiedTxt)
+  })
+  .catch((error) => {
+    console.log(error)
+  })
