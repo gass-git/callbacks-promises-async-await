@@ -8,7 +8,7 @@
 // --- EXAMPLE ---
 
 // function f() is passed as a parameter & will be called after 3 seconds
-setTimeout(f, 3000)
+setTimeout(f, 2000)
 
 function f() {
   // do something

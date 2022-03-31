@@ -4,7 +4,7 @@
  * the main function finishes doing their other stuffs.
  */
 
-// --- EXAMPLE one ---
+// --- EXAMPLE ---
 
 function after() {
   console.log('some text')
@@ -25,3 +25,29 @@ function before(callback) {
 
 before(after)
 
+/**
+ * CALLBACK HELL
+ * 
+ * Nesting callback within callback withing callback 
+ * within callback.....
+ */
+
+function showMsg(callback) {
+  callback()
+}
+
+showMsg(() => {
+  console.log('first callback')
+  showMsg(() => {
+    console.log('second callback')
+    showMsg(() => {
+      console.log('third callback')
+      showMsg(() => {
+        console.log('fourth callback')
+        showMsg(() => {
+          console.log('fifth callback')
+        })
+      })
+    })
+  })
+})
